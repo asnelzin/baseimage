@@ -52,6 +52,6 @@ jobs:
           echo GITHUB_REF - $ref
           echo ${GITHUB_PACKAGE_TOKEN} | docker login ghcr.io -u ${USERNAME} --password-stdin
           docker buildx build --push --platform linux/amd64,linux/arm/v7,linux/arm64 \
-            -t ghcr.io/${USERNAME}/baseimage/python:${ref}
-            -t ghcr.io/${USERNAME}/baseimage/python:latest
+            -t ghcr.io/${USERNAME}/baseimage/python:${ref} \
+            -t ghcr.io/${USERNAME}/baseimage/python:latest \
             basepy.alpine -f basepy.alpine/Dockerfile
