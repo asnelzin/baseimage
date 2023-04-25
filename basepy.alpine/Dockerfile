@@ -11,11 +11,12 @@ ENV \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONPATH=/srv
 
+COPY files/scripts/version.sh /script/version.sh
 COPY files/scripts/app.sh /usr/bin/app.sh
 COPY files/init.sh /init.sh
 
 RUN \
-    chmod +x /usr/bin/app.sh /init.sh && \
+    chmod +x /script/version.sh /usr/bin/app.sh /init.sh && \
     apk add --no-cache --update su-exec tzdata curl ca-certificates shared-mime-info dumb-init && \
     ln -s /sbin/su-exec /usr/local/bin/gosu && \
     mkdir -p /home/$APP_USER && \
